@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Worldwide Alcohol Consumption</title>
+
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <a class="navbar-brand" href="/home" style="color: white; background-color: navy;">
+                    <span class="nav-color">World Alcohol Consumption</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-left" style="color: black; background-color:rgb(120, 234, 225);">
+                    <li><a href="/rate">Consumption Rate</a></li>
+                    <li><a href="/datatable">Data Table</a></li>
+                    <li><a href="/summary">Project Summary</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <h1 class="display-4">Project Summary - Team 4</h1>
+                                    <p class="lead">The objective of the project was to collect and clean data, store the data in a SQLite database, connect the database to a local server using Python Flask, and to create interactive web visualizations.<br><br> Our group chose to examine alcohol consumption for 180 countries in the world and to compare total consumption (in liters per person per year) with death rate due to alcohol-related incidents, legal alcohol purchase age, gross domestic product, and by consumption type (i.e., beer, wine, spirits, and other)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4>The Process</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>The data was gathered from Wikipedia (for alcohol consumption by country and GDP) and two other websites, one containing the legal alcohol purchase age, and the other having the death rates.</li>
+                                            <li>The data containing the vector data needed to draw
+                                                borders for our choropleth map was downloaded as a .json file that we then translated from json into geojson, so the leaflet package could read it.</li>
+                                            <li>After gathering the data, we cleaed it in Python Pandas and Excel, and merged all four data sources into one made it into one dataframe. Then we created a SQLite database from our data which we connected to a local server using Python Flask.</li>
+                                            <li>After connecting our data to the front-end, we created two visualizations, one using MapBox and Leaflet, and another using D3.js.
+                                            </li>
+                                            <li>We used MapBox and Leaflet to create four choropleth maps, shading the various countries different hues based on the
+                                                percentage of each alcohol type the country consumed (beer, wine, spirits, other).</li>
+                                            <li>A scatter plot was created using D3 to visualize the relationship between Death Rate due to Alcohol Related Incidents and Total Alcohol Consumption.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4>Complications</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>The first issue we ran into was the SQLite database not having the correct primary
+                                                key, as well as being in the wrong data type (i.e. switching from TEXT to
+                                                FLOAT).
+                                            </li>
+                                            <li>We then ran into an issue with connecting our SQLite database to our Flask App, but resolved it without much trouble.</li>
+                                            <li>We had multiple issues getting our Leaflet map to work correctly on many fronts. One piece of code would work, but then another issue would arise.</li>
+                                            <li>There was a minor issue getting our HTML pages linked correctly via Flask, but that was
+                                                an easy fix by referencing the correct route.</li>
+                                            <li>The most complicated issue that we had, and a ton of help from our honorary 5th member
+                                                (Julien!), was combining the vectormap.geojson that had our border data and
+                                                our SQLite data. The SQLite data contained the alcohol consumption types by percent
+                                                that needed to be inserted into the .geojson file, so we could reference it from our choropleth
+                                                call.
+                                            </li>
+                                            <li>There was an issue creating a filter button for our choropleth map that would toggle between
+                                                the different types of alcohol consumption.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4>Final Conclusion</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>We learned a great deal about javascript and writing multiple functions to visualize the choropleth map. Also including the buttons to load each map.</li>
+                                            <li>There doesn't seem to be a relationship between Death Rate due to Alcohol Related Incidents and Total Alcohol Consumption per the scatter plot.</li>
+                                            <li>If there was more time, we would have liked to add Tool Tips to the choropleth map displaying the country specific alcohol consumption type and having an on-click event that would include a pie chart of the corresponding country.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
